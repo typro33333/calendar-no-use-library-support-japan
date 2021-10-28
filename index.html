@@ -52,7 +52,6 @@
                       type="radio"
                       id="radio-1"
                       name="group-1"
-                      id="1"
                       onclick="Radio1Click()"
                       checked
                     />
@@ -136,648 +135,319 @@
               </div>
             </div>
           </div>
+          <!--Stick-->
           <div class="container-stick-dot">
             <div class="stick-dot-2"></div>
           </div>
-          <div class="container-form">
-            <div class="title-content">
+          <!--End Stick-->
+
+          <!-- Form 2-->
+          <div class="form2">
+            <div class="form2__title">
               <p>
-                在庫の更新方法選択
+                在庫登録日
                 <br />
-                <span class="sub-title">必須</span>
+                <span class="form2__subtitle">必須</span>
               </p>
             </div>
-            <div class="form-content">
-              <div class="container-title-form2">
-                <p class="txt-content hidden" id="second">
-                  在庫表示のON/OFFを選択してください。
-                </p>
-                <p class="txt-content" id="first">
-                  在庫として表示する日を選択してください。
-                </p>
-                <label class="main"
-                  >すべての日を選択
-                  <input type="checkbox" id="clickall" onclick="ClickAll()" />
-                  <span class="geekmark"></span>
-                </label>
-              </div>
-              <div class="group-checkbox-1">
-                <div
-                  class="container-checkbox checkbox-checked"
-                  id="layout-checkbox2"
-                >
-                  <div class="container-checkbox-2">
-                    <label class="main color-txt-checkbox"
-                      >日
-                      <input
-                        type="checkbox"
-                        id="checkbox2"
-                        onclick="CheckBox2()"
+            <div class="form2__right-content">
+                <div class="right-conent__ele1-container">
+                  <div class="ele1-container__content-default style-txt" id="first">
+                    <p>在庫として表示する日を選択してください。</p>
+                  </div>
+                  <div class="ele1-container__content-on-off style-txt" id="second">
+                    <p>在庫表示のON/OFFを選択してください。</p>
+                  </div>
+                  <div>
+                    <label class="container style-txt">すべての日を選択
+                      <input type="checkbox" id="checkbox-all" onclick="ClickAll()">
+                      <span class="checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+                <div class="right-conent__ele2-container">
 
-                      />
-                      <span class="geekmark"></span>
+                  <!--List_1 checkbox-->
+                  <div class="ele2-container__checkbox1 border-checkbox" id="ele2-container__checkbox1">
+                    <label class="container1 style-txt-checkbox" onchange="CheckBox1()">日
+                      <input type="checkbox" id="checkbox1">
+                      <span class="checkmark1"></span>
                     </label>
                   </div>
-                </div>
-                <div class="container-checkbox" id="layout-checkbox3">
-                  <div class="container-checkbox-2">
-                    <label class="main color-txt-checkbox"
-                      >月
-                      <input
-                        type="checkbox"
-                        id="checkbox3"
-                        onclick="CheckBox3()"
-                      />
-                      <span class="geekmark"></span>
+                  <div class="ele2-container__checkbox1 border-checkbox" id="ele2-container__checkbox2">
+                    <label class="container1 style-txt-checkbox" onchange="CheckBox2()">月
+                      <input type="checkbox" id="checkbox2">
+                      <span class="checkmark1"></span>
                     </label>
                   </div>
-                </div>
-                <div class="container-checkbox" id="layout-checkbox4">
-                  <div class="container-checkbox-2">
-                    <label class="main color-txt-checkbox"
-                      >火
-                      <input
-                        type="checkbox"
-                        id="checkbox4"
-                        onclick="CheckBox4()"
-                      />
-                      <span class="geekmark"></span>
+                  <div class="ele2-container__checkbox1 border-checkbox" id="ele2-container__checkbox3">
+                    <label class="container1 style-txt-checkbox" onchange="CheckBox3()">火
+                      <input type="checkbox" id="checkbox3">
+                      <span class="checkmark1"></span>
                     </label>
                   </div>
-                </div>
-                <div class="container-checkbox" id="layout-checkbox5">
-                  <div class="container-checkbox-2">
-                    <label class="main color-txt-checkbox"
-                      >水
-                      <input
-                        type="checkbox"
-                        id="checkbox5"
-                        onclick="CheckBox5()"
-                      />
-                      <span class="geekmark"></span>
+                  <div class="ele2-container__checkbox1 border-checkbox" id="ele2-container__checkbox4">
+                    <label class="container1 style-txt-checkbox" onchange="CheckBox4()">水
+                      <input type="checkbox" id="checkbox4">
+                      <span class="checkmark1"></span>
                     </label>
                   </div>
-                </div>
-                <div class="container-checkbox" id="layout-checkbox6">
-                  <div class="container-checkbox-2">
-                    <label class="main color-txt-checkbox"
-                      >木
-                      <input
-                        type="checkbox"
-                        id="checkbox6"
-                        onclick="CheckBox6()"
-                      />
-                      <span class="geekmark"></span>
+                  <div class="ele2-container__checkbox1 border-checkbox" id="ele2-container__checkbox5">
+                    <label class="container1 style-txt-checkbox" onchange="CheckBox5()">木
+                      <input type="checkbox" id="checkbox5">
+                      <span class="checkmark1"></span>
                     </label>
                   </div>
+                  <!--End list_1 checkbox-->
                 </div>
-                <div class="container-checkbox" id="layout-checkbox7">
-                  <div class="container-checkbox-2">
-                    <label class="main color-txt-checkbox"
-                      >金
-                      <input
-                        type="checkbox"
-                        id="checkbox7"
-                        onclick="CheckBox7()"
-                      />
-                      <span class="geekmark"></span>
+                <div class="right-conent__ele3-container">
+                  <!--List_2 checkbox-->
+                  <div class="ele2-container__checkbox1 border-checkbox" id="ele2-container__checkbox6">
+                    <label class="container1 style-txt-checkbox" onchange="CheckBox6()">金
+                      <input type="checkbox" name="checkbox6" id="checkbox6">
+                      <span class="checkmark1"></span>
                     </label>
                   </div>
-                </div>
-                <div class="container-checkbox" id="layout-checkbox8">
-                  <div class="container-checkbox-2">
-                    <label class="main color-txt-checkbox"
-                      >土
-                      <input
-                        type="checkbox"
-                        id="checkbox8"
-                        onclick="CheckBox8()"
-                      />
-                      <span class="geekmark"></span>
+                  <div class="ele2-container__checkbox1 border-checkbox" id="ele2-container__checkbox7">
+                    <label class="container1 style-txt-checkbox" onchange="CheckBox7()">土
+                      <input type="checkbox" id="checkbox7">
+                      <span class="checkmark1"></span>
                     </label>
                   </div>
-                </div>
-                <div class="container-checkbox disable" id="layout_1">
-                  <div class="container-checkbox-2">
-                    <label class="main color-txt-checkbox"
-                      >祝日
-                      <input 
-                      type="checkbox" 
-                      disabled id="disable1"
-                      onclick="CheckBox9()"
-                      />
-                      <span class="geekmark"></span>
+                  <div class="ele2-container__checkbox1 border-checkbox" id="ele2-container__checkbox8">
+                    <label class="container1 style-txt-checkbox" id="checkbox__txt-8">祝日
+                      <input type="checkbox" id="checkbox8" disabled onchange="CheckBox8()">
+                      <span class="checkmark1" id="checkbox-disable"></span>
                     </label>
                   </div>
-                </div>
-                <div class="container-checkbox disable" id="layout_2">
-                  <div class="container-checkbox-2">
-                    <label class="main color-txt-checkbox"
-                      >祝前日
-                      <input 
-                      type="checkbox" 
-                      disabled 
-                      id="disable2"
-                      onclick="CheckBox10()"
-                      />
-                      <span class="geekmark"></span>
+                  <div class="ele2-container__checkbox1 border-checkbox" id="ele2-container__checkbox9">
+                    <label class="container1 style-txt-checkbox" id="checkbox__txt-9">祝前日
+                      <input type="checkbox" id="checkbox9" disabled onchange="CheckBox9()">
+                      <span class="checkmark1" id="checkbox-disable"></span>
                     </label>
                   </div>
+                  <div class="ele2-container__checkbox1 border-checkbox hide" id="ele2-container__checkbox10">
+                    <label class="container1 style-txt-checkbox">木
+                      <input type="checkbox" id="checkbox10">
+                      <span class="checkmark1"></span>
+                    </label>
+                  </div>
+                  <!--End list_2 checkbox -->
                 </div>
-              </div>
+
+                <!--Element-4 -->
+                <div class="right-conent__ele4">
+                  <div class="ele4-container">
+                    <div class="ele4-container__title style-txt">
+                      在庫として選択いただいた日が重なってしまう場合に曜日と祝日・祝前日どちらを優先するか選択してください。
+                    </div>
+                    <div class="container-btn-radio">
+                      <div class="radio-1" id="radio-6-layout">
+                        <div class="container-radio">
+                          <input
+                            type="radio"
+                            id="radio-6"
+                            name="group-3"
+                            onclick="Radio6Click()"
+                            checked
+                          />
+                          <label for="radio-6" class="label">自動更新</label>
+                        </div>
+                      </div>
+                      <div class="radio-2" id="radio-7-layout">
+                        <div class="container-radio">
+                          <input
+                            type="radio"
+                            id="radio-7"
+                            name="group-3"
+                            onclick="Radio7Click()"
+                          />
+                          <label for="radio-7" class="label">期間指定</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--End element-4 -->
+
+                <!--Element-5 -->
+                <div class="right-conent__ele5">
+                  <div class="ele5-container">
+                    <div class="ele5-container__title style-txt">
+                      営業日を変則的に設定される場合は下のカレンダーで個別に設定してください。
+                    </div>
+                    <div class="ele5-container__calendar">
+                      <div class="calendar-container">
+                        <div class="calendar-container__month style-txt">
+                          <div class="month__privious" onclick="priviousMonth()">< 前月</div>
+                          <div class="month__center"><span id="year">2021</span>年<span id="month">10</span>月</div>
+                          <div class="month__next" onclick="nextMonth()">翌月></div>
+                        </div>
+                        <div class="calendar-container__dates" id="list_dates">
+                          <!--Render by function 285 -->
+                        </div>
+                        <div class="calendar-container__days" id="days">
+                          <div class="days__rows">
+                            <div class="rows__item" id="0">
+                              <p class="rows__item__txt" id="txt0"></p>
+                            </div>
+                            <div class="rows__item" id="1">
+                              <p class="rows__item__txt" id="txt1"></p>
+                            </div>
+                            <div class="rows__item" id="2">
+                              <p class="rows__item__txt" id="txt2"></p>
+                            </div>
+                            <div class="rows__item" id="3">
+                              <p class="rows__item__txt" id="txt3"></p>
+                            </div>
+                            <div class="rows__item" id="4">
+                              <p class="rows__item__txt" id="txt4">s</p>
+                            </div>
+                            <div class="rows__item" id="5">
+                              <p class="rows__item__txt" id="txt5"></p>
+                            </div>
+                            <div class="rows__item" id="6">
+                              <p class="rows__item__txt" id="txt6"></p>
+                            </div>
+                          </div>
+                          <div class="days__rows">
+                            <div class="rows__item" id="7">
+                              <p class="rows__item__txt" id="txt7"></p>
+                            </div>
+                            <div class="rows__item" id="8">
+                              <p class="rows__item__txt" id="txt8"></p>
+                            </div>
+                            <div class="rows__item" id="9">
+                              <p class="rows__item__txt" id="txt9"></p>
+                            </div>
+                            <div class="rows__item" id="10">
+                              <p class="rows__item__txt" id="txt10"></p>
+                            </div>
+                            <div class="rows__item" id="11">
+                              <p class="rows__item__txt" id="txt11"></p>
+                            </div>
+                            <div class="rows__item" id="12">
+                              <p class="rows__item__txt" id="txt12"></p>
+                            </div>
+                            <div class="rows__item" id="13">
+                              <p class="rows__item__txt" id="txt13"></p>
+                            </div>
+                          </div>
+                          <div class="days__rows">
+                            <div class="rows__item" id="14">
+                              <p class="rows__item__txt" id="txt14"></p>
+                            </div>
+                            <div class="rows__item" id="15">
+                              <p class="rows__item__txt" id="txt15"></p>
+                            </div>
+                            <div class="rows__item" id="16">
+                              <p class="rows__item__txt" id="txt16"></p>
+                            </div>
+                            <div class="rows__item" id="17">
+                              <p class="rows__item__txt" id="txt17"></p>
+                            </div>
+                            <div class="rows__item" id="18">
+                              <p class="rows__item__txt" id="txt18"></p>
+                            </div>
+                            <div class="rows__item" id="19">
+                              <p class="rows__item__txt" id="txt19"></p>
+                            </div>
+                            <div class="rows__item" id="20">
+                              <p class="rows__item__txt" id="txt20"></p>
+                            </div>
+                          </div>
+                          <div class="days__rows">
+                            <div class="rows__item" id="21">
+                              <p class="rows__item__txt" id="txt21"></p>
+                            </div>
+                            <div class="rows__item" id="22">
+                              <p class="rows__item__txt" id="txt22"></p>
+                            </div>
+                            <div class="rows__item" id="23">
+                              <p class="rows__item__txt" id="txt23"></p>
+                            </div>
+                            <div class="rows__item" id="24">
+                              <p class="rows__item__txt" id="txt24"></p>
+                            </div>
+                            <div class="rows__item" id="25">
+                              <p class="rows__item__txt" id="txt25"></p>
+                            </div>
+                            <div class="rows__item" id="26">
+                              <p class="rows__item__txt" id="txt26"></p>
+                            </div>
+                            <div class="rows__item" id="27">
+                              <p class="rows__item__txt" id="txt27"></p>
+                            </div>
+                          </div>
+                          <div class="days__rows">
+                            <div class="rows__item" id="28">
+                              <p class="rows__item__txt" id="txt28"></p>
+                            </div>
+                            <div class="rows__item" id="29">
+                              <p class="rows__item__txt" id="txt29"></p>
+                            </div>
+                            <div class="rows__item" id="30">
+                              <p class="rows__item__txt" id="txt30"></p>
+                            </div>
+                            <div class="rows__item" id="31">
+                              <p class="rows__item__txt" id="txt31"></p>
+                            </div>
+                            <div class="rows__item" id="32">
+                              <p class="rows__item__txt" id="txt32"></p>
+                            </div>
+                            <div class="rows__item" id="33">
+                              <p class="rows__item__txt" id="txt33"></p>
+                            </div>
+                            <div class="rows__item" id="34">
+                              <p class="rows__item__txt" id="txt34"></p>
+                            </div>
+                          </div>
+                          <div class="days__rows">
+                            <div class="rows__item" id="35">
+                              <p class="rows__item__txt" id="txt35"></p>
+                            </div>
+                            <div class="rows__item" id="36">
+                              <p class="rows__item__txt" id="txt36"></p>
+                            </div>
+                            <div class="rows__item" id="37">
+                              <p class="rows__item__txt" id="txt37"></p>
+                            </div>
+                            <div class="rows__item" id="38">
+                              <p class="rows__item__txt" id="txt38"></p>
+                            </div>
+                            <div class="rows__item" id="39">
+                              <p class="rows__item__txt" id="txt39"></p>
+                            </div>
+                            <div class="rows__item" id="40">
+                              <p class="rows__item__txt" id="txt40"></p>
+                            </div>
+                            <div class="rows__item" id="41">
+                              <p class="rows__item__txt" id="txt41"></p>
+                            </div>
+                          </div>
+                          <div class="calendar-des">
+                            祝 
+                            <span class="calendar-des__item">祝日</span>
+                            休
+                            <span class="calendar-des__item">定休日設定で登録したお店がお休みの日</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!--End element-5 -->
+
             </div>
           </div>
-            <div class="content-3">
-                <div class="sk1"></div>
-                <div class="ske2">
-                    <p>在庫として選択いただいた日が重なってしまう場合に曜日と祝日・祝前日どちらを優先するか選択してください。</p>
-                    <div class="container-btn-radio layout-radio67">
-                        <div class="radio-6" id="radio-6-layout">
-                            <div class="container-radio">
-                                <input
-                                type="radio"
-                                id="radio-6"
-                                name="group-3"
-                                onclick="Radio6Click()"
-                                checked
-                                />
-                                <label for="radio-6" class="label">曜日を優先する</label>
-                            </div>
-                        </div>
-                        <div class="radio-7" id="radio-7-layout">
-                            <div class="container-radio">
-                                <input
-                                type="radio"
-                                id="radio-7"
-                                name="group-3"
-                                onclick="Radio7Click()"
-                                />
-                                <label for="radio-7" class="label">祝日・祝前日を優先する</label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-form calendar">
-                <div class="title-content"></div>
-                <div class="layout-calendar">
-                    <div class="container-calendar">
-                        <div class="title-calendar">
-                            <p>営業日を変則的に設定される場合は下のカレンダーで個別に設定してください。</p>
-                        </div>
-                        <div class="calendar-ske">
-                            <div class="month-calendar">
-                                <p class="btn-left-month style-btn-month" onclick="priviousMonth()">< 前月</p>
-                                <p class="btn-right-month style-btn-month" onclick="nextMonth()">翌月 ></p>
-                                <div class="btn-center-month"><span id="year">2021</span>年<span id="month">10</span>月</div>
-                            </div>
-                            <div class="layout-date-calendar">
-                                <div class="container-date-calendar">
-                                <table >
-                                    <tr>
-                                    <th style="color: rgb(230, 64, 64);">日</th>
-                                    <th>月</th>
-                                    <th>火</th>
-                                    <th>水</th>
-                                    <th>木</th>
-                                    <th>金</th>
-                                    <th style="color: blue;">土</th>
-                                    </tr>
-                                    <tr id="row-1">
-                                    <td id="item1">
-                                        <div>
-                                            <div id="o1">
-                                            26
-                                            </div>
-                                            <div style="visibility: hidden;">
-                                            0
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td id="item2">
-                                        <div>
-                                            <div>
-                                            27
-                                            </div>
-                                            <div style="visibility: hidden;">
-                                            0
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td id="item3">
-                                        <div>
-                                            <div>
-                                            28
-                                            </div>
-                                            <div style="visibility: hidden;">
-                                            0
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td id="item4">
-                                        <div>
-                                            <div>
-                                            29
-                                            </div>
-                                            <div style="visibility: hidden;">
-                                            0
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td id="item5">
-                                        <div>
-                                            <div>
-                                            30
-                                            </div>
-                                            <div style="visibility: hidden;">
-                                            0
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td id="item6">
-                                        <div>
-                                            <div>
-                                            1
-                                            </div>
-                                            <div style="visibility: hidden;">
-                                            0
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td id="item7">
-                                        <div>
-                                            <div>
-                                            2
-                                            </div>
-                                            <div style="visibility: hidden;">
-                                            0
-                                            </div>
-                                        </div>
-                                    </td>
-                                    </tr>
-                                    <tr id="row-2">
-                                        <td id="item8">
-                                            <div>
-                                                <div>
-                                                3
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item9">
-                                            <div>
-                                                <div>
-                                                4
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item10">
-                                            <div>
-                                                <div>
-                                                5
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item11">
-                                            <div>
-                                                <div>
-                                                6
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item12">
-                                            <div>
-                                                <div>
-                                                7
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item13">
-                                            <div>
-                                                <div>
-                                                8
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item14">
-                                            <div>
-                                                <div>
-                                                9
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr id="row-3">
-                                        <td id="item15">
-                                            <div>
-                                                <div>
-                                                10
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item16">
-                                            <div>
-                                                <div>
-                                                11
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item17">
-                                            <div>
-                                                <div>
-                                                12
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item18">
-                                            <div>
-                                                <div>
-                                                13
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item19">
-                                            <div>
-                                                <div>
-                                                14
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item20">
-                                            <div>
-                                                <div>
-                                                15
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item21">
-                                            <div>
-                                                <div>
-                                                16
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr id="row-4">
-                                        <td id="item22">
-                                            <div>
-                                                <div style="height: 34px;">
-                                                17
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                    0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item23">
-                                            <div>
-                                                <div>
-                                                18
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item24">
-                                            <div>
-                                                <div>
-                                                19
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td id="item25">
-                                            <div>
-                                                <div>
-                                                20
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="future" id="item26">
-                                            <div>
-                                                <div>
-                                                21
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="future" id="item27">
-                                            <div>
-                                                <div>
-                                                22
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="future" id="item28">
-                                            <div>
-                                                <div>
-                                                23
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr id="row-5">
-                                        <td class="future" id="item29"><div>
-                                            <div style="height: 34px;">
-                                            24
-                                            </div>
-                                            <div style="width: 100%; background-color:rgb(254,254,233);height:24px;border-radius:0px 0px 4px 4px; text-align:center;font-size:15px">
-                                                営業日
-                                            </div>
-                                        </div></td>
-                                        <td id="item30" class="future"><div>
-                                            <div>
-                                            25
-                                            </div>
-                                            <div style="visibility: hidden;">
-                                            0
-                                            </div>
-                                        </div></td>
-                                        <td class="future" id="item31"><div>
-                                            <div>
-                                            26
-                                            </div>
-                                            <div style="visibility: hidden;">
-                                            0
-                                            </div>
-                                        </div></td>
-                                        <td class="future" id="item32"><div>
-                                            <div>
-                                            27
-                                            </div>
-                                            <div style="visibility: hidden;">
-                                            0
-                                            </div>
-                                        </div></td>
-                                        <td class="future" id="item33">
-                                            <div>
-                                                <div>
-                                                28
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="future" id="item34"><div>
-                                            <div>
-                                            29
-                                            </div>
-                                            <div style="visibility: hidden;">
-                                            0
-                                            </div>
-                                        </div></td>
-                                        <td class="future" id="item35">
-                                            <div>
-                                                <div>
-                                                30
-                                                </div>
-                                                <div style="visibility: hidden;">
-                                                0
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                        <tr id="row-6">
-                                            <td class="future" id="item36">
-                                                <div>
-                                                    <div style="height: 34px;">
-                                                    31
-                                                    </div>
-                                                    <div style="width: 100%; background-color:rgb(254,254,233);height:24px;border-radius:0px 0px 4px 4px; text-align:center;font-size:15px">
-                                                        営業日
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td id="item37">
-                                                <div>
-                                                    <div>
-                                                    1
-                                                    </div>
-                                                    <div style="visibility: hidden;">
-                                                    0
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td id="item38">
-                                                <div>
-                                                    <div>
-                                                    2
-                                                    </div>
-                                                    <div style="visibility: hidden;">
-                                                    0
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td id="item39">
-                                                <div>
-                                                    <div>
-                                                    3
-                                                    </div>
-                                                    <div style="visibility: hidden;">
-                                                    0
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td id="item40">
-                                                <div>
-                                                    <div>
-                                                    4
-                                                    </div>
-                                                    <div style="visibility: hidden;">
-                                                    0
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td id="item41">
-                                                <div>
-                                                    <div>
-                                                    5
-                                                    </div>
-                                                    <div style="visibility: hidden;">
-                                                    0
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td id="item42">
-                                                <div>
-                                                    <div>
-                                                    6
-                                                    </div>
-                                                    <div style="visibility: hidden;">
-                                                    0
-                                                    </div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <div style="margin-top: 12px;">
-                                        <p class="sub-c-calendar">祝 <span style="margin-left: 10px;" class="hightlight-txt">祝日</span><span style="margin-left: 24px;">休</span><span style="margin-left: 12px;" class="hightlight-txt">定休日設定で登録したお店がお休みの日</span></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container-stick-dot">
-                <div class="stick-dot-2"></div>
-              </div>
+          <!-- Form 2-->
+
+          <!--Stick-->
+          <div class="container-stick-dot">
+            <div class="stick-dot-2"></div>
+          </div>
+          <!--End Stick-->
+
               <div class="container-form">
                 <div class="title-content">
                   <p>
@@ -795,32 +465,9 @@
                       <div class="item-title-dr-2"><p>利用終了時刻</p></div>
                   </div>
                   <div class="dr-time">
-                    <div class="dr-container-1">
-                        <select class="item-dr-1">
-                            <option value="0">-1:00</option>
-                            <option value="1">-2:00</option>
-                            <option value="1">-3:00</option>
-                            <option value="1">-4:00</option>
-                            <option value="1">-5:00</option>
-                            <option value="1">-6:00</option>
-                            <option value="1">-7:00</option>
-                            <option value="1">-8:00</option>
-                            <option value="1">-9:00</option>
-                            <option value="1">-10:00</option>
-                            <option value="1">-11:00</option>
-                            <option value="1">-12:00</option>
-                            <option value="0">-13:00</option>
-                            <option value="1">-14:00</option>
-                            <option value="1">-15:00</option>
-                            <option value="1">-16:00</option>
-                            <option value="1">-17:00</option>
-                            <option value="1">-18:00</option>
-                            <option value="1">-19:00</option>
-                            <option value="1">-20:00</option>
-                            <option value="1">-21:00</option>
-                            <option value="1">-22:00</option>
-                            <option value="1">-23:00</option>
-                            <option value="1">-00:00</option>
+                    <div class="dr-container-1" id="dropdow1">
+                        <select class="item-dr-1" id="select_1">
+                          <!--Render by Function-->
                         </select>
                         <div class="arrow">
                             <div class="item-arrow">
@@ -831,32 +478,9 @@
                     <div class="goto">
                         ~
                     </div>
-                    <div class="dr-container-1">
-                        <select class="item-dr-1">
-                            <option value="0">-1:00</option>
-                            <option value="1">-2:00</option>
-                            <option value="1">-3:00</option>
-                            <option value="1">-4:00</option>
-                            <option value="1">-5:00</option>
-                            <option value="1">-6:00</option>
-                            <option value="1">-7:00</option>
-                            <option value="1">-8:00</option>
-                            <option value="1">-9:00</option>
-                            <option value="1">-10:00</option>
-                            <option value="1">-11:00</option>
-                            <option value="1">-12:00</option>
-                            <option value="0">-13:00</option>
-                            <option value="1">-14:00</option>
-                            <option value="1">-15:00</option>
-                            <option value="1">-16:00</option>
-                            <option value="1">-17:00</option>
-                            <option value="1">-18:00</option>
-                            <option value="1">-19:00</option>
-                            <option value="1">-20:00</option>
-                            <option value="1">-21:00</option>
-                            <option value="1">-22:00</option>
-                            <option value="1">-23:00</option>
-                            <option value="1">-00:00</option>
+                    <div class="dr-container-1" id="dropdown2">
+                        <select class="item-dr-1" id="select_2">
+                          <!--Render by Function-->
                         </select>
                         <div class="arrow">
                             <div class="item-arrow">
@@ -889,11 +513,8 @@
                     <div class="container-image">
                         No image
                     </div>
-                    <div class="content-form-2">
-                        <div class="item1 border1"><span style="margin-left: 12px;">プレミアムプラン席</span></div>
-                        <div class="item1 border2"><span style="margin-left: 12px;">プレミアムプラン席</span></div>
-                        <div class="item2 border3"><span style="margin-left: 12px;">テーブル</span></div>
-                        <div class="item2 border3"><span style="margin-left: 12px;">1〜7名</span></div>
+                    <div class="content-form-2" id="content-form-2">
+                      <!--Render by Function-->
                     </div>
                     <div class="choose-number">
                         <div class="container-choose-number">

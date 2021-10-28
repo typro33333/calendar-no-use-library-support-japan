@@ -124,6 +124,7 @@ p,h1{
     display: flex;
     flex-direction: column;
     order: 3;
+    width: 100%;
 }
 .sub-title{
     color: rgb(231, 69, 20);
@@ -358,8 +359,7 @@ input[type=checkbox] {
 }
 
 .container-checkbox{
-    width: 150px;
-    max-width: 150px;
+    width: 18.2%;
     border: 0.5px solid rgb(192, 192, 192);
     height: 52px;
     margin-top: 16px;
@@ -689,24 +689,28 @@ select{
     color: var(--color-text-normal);
 }
 
-.border1{
+.border0{
     border-top:0.5px solid rgb(213, 213, 216);
     border-bottom:0.5px solid rgb(213, 213, 216);
     border-right:0.5px solid rgb(213, 213, 216);
 }
+.border1{
+    border-bottom:0.5px solid rgb(213, 213, 216);
+    border-right:0.5px solid rgb(213, 213, 216);
+}
+
 .border2{
     border-bottom:0.5px solid rgb(213, 213, 216);
     border-right:0.5px solid rgb(213, 213, 216);
 }
 
-.border3{
-    border-bottom:0.5px solid rgb(213, 213, 216);
-    border-right:0.5px solid rgb(213, 213, 216);
+.item1__text--style{
+    margin-left: 12px;
 }
 
 .choose-number{
     height: 98%;
-    width: 36.5%;
+    width: 40%;
     background-color: #ffffff;
     border: 0.5px solid rgb(213, 213, 216);
     border-left: none;
@@ -789,3 +793,401 @@ select {
     text-overflow: '';
     background-color: white;
 }
+
+.form2{
+    width: 93%;
+    height: auto;
+    display: grid;
+    grid-template-columns: 27% 70%;
+    padding-top: 32px;
+    padding-bottom: 28px;
+    margin: auto;
+    grid-gap: 24px;
+    justify-content: center;
+}
+
+.form2__title{
+    font-size: 24px;
+    color: var(--color-title);
+    font-weight: 900;
+}
+
+.form2__subtitle{
+    color: rgb(231, 69, 20);
+    font-size: 16px;
+}
+
+.form2__right-content{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.right-conent__ele1-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 28px;
+}
+
+.style-txt{
+    font-size: 18px;
+    color: var(--color-text-normal);
+}
+
+.ele1-container__content-default{
+    display: block;
+}
+
+.ele1-container__content-on-off{
+    display: none;
+}
+
+/* CheckBox Custom*/
+.container {
+display: block;
+position: relative;
+padding-left: 40px;
+margin-bottom: 3px;
+cursor: pointer;
+font-size: 18px;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+    border: 0.5px solid rgb(211, 211, 211);
+    border-radius: 4px;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: orange;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+/*End custom checkbox*/
+
+/*Form2__Ele2 */
+.container1 {
+    display: block;
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 3px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-top: 3px;
+}
+    
+    /* Hide the browser's default checkbox */
+.container1 input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 22px;
+    width: 22px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 2px;
+    border: 0.5px solid rgb(211, 211, 211);
+    border-radius: 4px;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container1 input:checked ~ .checkmark1 {
+    background-color: orange;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark1:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container1 input:checked ~ .checkmark1:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container1 .checkmark1:after {
+    left: 8px;
+    top: 4px;
+    width: 4px;
+    height: 9px;
+    border: 0.5px solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+/*End checkbox ele2*/
+
+.right-conent__ele2-container{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.ele2-container__checkbox1{
+    display: flex;
+    align-items: center;
+    width: 17%;
+    background-color: white;
+    height: 52px;
+    border-radius: 6px;
+    border: 0.5px solid rgb(196, 196, 196);
+}
+
+.style-txt-checkbox{
+    color: orange;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.border-checkbox{
+    padding-left: 12px;
+}
+
+/*Ele3*/
+.hide{
+    visibility: hidden;
+}
+
+.right-conent__ele3-container{
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: space-between;
+    padding-bottom: 18px;
+}
+
+/*End Ele3*/
+
+/*Ele4*/
+.right-conent__ele4{
+    width: 100%;
+    height: auto;
+    margin-bottom: 18px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.ele4-container{
+    display: flex;
+    flex-direction: column;
+    width: 95.5%;
+}
+
+.ele4-container__title{
+    padding-top: 18px;
+}
+/*Ele5*/
+
+/*Ele5*/
+.right-conent__ele5{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    background-color: #ffffff;
+    padding-bottom: 18px;
+}
+
+.ele5-container{
+    width: 95.5%;
+    height: auto;
+}
+
+.ele5-container__title{
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.ele5-container__calendar{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    background-color: rgb(245, 245, 245);
+}
+
+.calendar-container{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+}
+
+.calendar-container__month{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 24px;
+    height: auto;
+    padding-bottom: 18px;
+}
+
+.month__privious{
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.month__center{
+    text-align: center;
+    font-size: 22px;
+    color: rgb(90, 90, 90);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.month__next{
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.month__center:hover, .month__next:hover, .month__privious:hover{
+    color: rgb(136, 136, 136);
+}
+
+.calendar-container__dates{
+    display: flex;
+    justify-content: space-between;
+    height: 48px
+}
+
+.date__item{
+    border-top: 1.5px solid rgb(196, 196, 196);
+    width: 13.8%;
+    text-align: center;
+}
+
+.sunday{
+    padding-top: 4px;
+    color: rgb(233, 113, 113);
+    font-weight: 500;
+}
+
+.satday{
+    padding-top: 4px;
+    color: rgb(149, 181, 228);
+    font-weight: 500;
+}
+
+.normal-day{
+    padding-top: 4px;
+    color: #999999;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.calendar-container__days{
+    width: 100%;
+    height: auto;
+    margin-bottom: 18px;
+}
+.days__rows{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2px;
+}
+
+.rows__item{
+    width: 13.8%;
+    height: 64px;
+    background-color: rgb(250, 250, 250);
+}
+
+.rows__item__txt{
+    margin-left: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    font-size: 22px;
+    font-weight: 500;
+    color: rgb(99, 99, 108);
+}
+.choosen{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    background-color: rgb(253, 249, 233);
+    text-align: center;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+    color: var(--color-text-normal);
+    font-weight: 500;
+}
+
+.calendar-des{
+    padding-top: 12px;
+    font-size: 14px;
+    color: #999999;
+    font-weight: 400;
+}
+
+.calendar-des__item{
+    margin-left: 12px;
+    margin-right: 12px;
+    color: rgb(31, 31, 31);
+}
+/*End Ele5*/

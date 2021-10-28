@@ -12,6 +12,17 @@ function Radio1Click(){
     document.getElementById("first").style.display = "block";
 }
 
+function MonthHaveChoosen(){
+    let checkdefault = document.getElementById("radio-1").checked;
+    console.log(checkdefault)
+    var month = 0;
+    if(checkdefault == true){
+        month = 3;
+        return ;
+    }
+    return 0;
+}
+
 function Radio2Click(){
     var layout1 = document.getElementById('radio-1-layout');
     var layout2 = document.getElementById('radio-2-layout');
@@ -57,160 +68,999 @@ function Radio5Click(){
     layout5.style.background = "rgb(255, 241, 221)";
 }
 
+function getDatesInMonth(){
+    let d = new Date();
+        let month = d.getMonth();
+        let year = d.getFullYear();
+        var point =[];
+        let nowDate = new Date(year,month,0).getDate();
+        for(var i=0;i<7;i++){
+            if(document.getElementById(`txt${i}`).innerHTML < 8){
+                point.push(i);
+            }
+        }
+        var point2 =(nowDate-point.length)
+        for(var i = 0; i<point2;i++){
+            point.push(point[point.length-1]+1)
+        }
+        var currentdate = d.getDate();
+        data2 = [];
+        for(var i = point[0]; i<42;i++){
+            var a = document.getElementById(`txt${i}`).innerHTML;
+            if(currentdate <= Number(a)){
+                data2.push(`${i}`);
+            }
+        }
+    return data2;
+}
+
+function CheckBox1(){
+    var checkbox0 = document.getElementById("checkbox1").checked;
+    var month = document.getElementById("month").innerHTML;
+    var year = document.getElementById("year").innerHTML;
+    console.log(timeLocal(),timeConvert(year,month));
+    if(checkbox0){
+        if(month == monthNumber && year == yearlocal){
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 0){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }else if(timeLocal() < timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            console.log(point)
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 0){
+                    var a = document.getElementById(`${point[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${point[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox1").style.backgroundColor = "rgb(255, 241, 221)";
+    }else{
+        if(month == monthNumber && year == yearlocal){
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 0){
+                    document.getElementById(`choosen${data2[i]}`).outerHTML = "";
+                }
+            }
+        }else if(timeLocal() < timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 0){
+                    document.getElementById(`choosen${point[i]}`).remove();
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox1").style.backgroundColor = "white";
+    }
+}
+
 function CheckBox2(){
     var checkbox2 = document.getElementById("checkbox2").checked;
+    var month = document.getElementById("month").innerHTML;
+    var year = document.getElementById("year").innerHTML;
     if(checkbox2){
-        document.getElementById("layout-checkbox2").style.backgroundColor = "rgb(255, 241, 221)";
+        if(month == monthNumber && yearlocal == year){
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 1){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }else if(timeLocal() < timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 1){
+                    var a = document.getElementById(`${point[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${point[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox2").style.backgroundColor = "rgb(255, 241, 221)";
     }else{
-        document.getElementById("layout-checkbox2").style.backgroundColor = "white";
+        if(month == monthNumber && year == yearlocal){
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 1){
+                    var a = document.getElementById(`${data2[i]}`);
+                    document.getElementById(`choosen${data2[i]}`).outerHTML = "";
+                }
+            }
+        }else if(timeLocal() < timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 1){
+                    document.getElementById(`choosen${point[i]}`).remove();
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox2").style.backgroundColor = "white";
     }
 }
 
 function CheckBox3(){
     var checkbox3 = document.getElementById("checkbox3").checked;
+    var month = document.getElementById("month").innerHTML;
+    var year = document.getElementById("year").innerHTML;
     if(checkbox3){
-        document.getElementById("layout-checkbox3").style.backgroundColor = "rgb(255, 241, 221)";
+        if(month == monthNumber && yearlocal == year){
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 2){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }else if(timeLocal() < timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 2){
+                    var a = document.getElementById(`${point[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${point[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox3").style.backgroundColor = "rgb(255, 241, 221)";
     }else{
-        document.getElementById("layout-checkbox3").style.backgroundColor = "white";
+        if(month == monthNumber && year == yearlocal){
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 2){
+                    var a = document.getElementById(`${data2[i]}`);
+                    document.getElementById(`choosen${data2[i]}`).outerHTML = "";
+                }
+            }
+        }else if(timeLocal() < timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 2){
+                    document.getElementById(`choosen${point[i]}`).remove();
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox3").style.backgroundColor = "white";
     }
 }
 
 function CheckBox4(){
     var checkbox4 = document.getElementById("checkbox4").checked;
+    var month = document.getElementById("month").innerHTML;
+    var year = document.getElementById("year").innerHTML;
     if(checkbox4){
-        document.getElementById("layout-checkbox4").style.backgroundColor = "rgb(255, 241, 221)";
+        if(month == monthNumber && yearlocal == year){
+            console.log(true)
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 3){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }else if(timeLocal()<timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 3){
+                    var a = document.getElementById(`${point[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${point[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox4").style.backgroundColor = "rgb(255, 241, 221)";
     }else{
-        document.getElementById("layout-checkbox4").style.backgroundColor = "white";
+        if(month == monthNumber && year == yearlocal){
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 3){
+                    var a = document.getElementById(`${data2[i]}`);
+                    document.getElementById(`choosen${data2[i]}`).outerHTML = "";
+                }
+            }
+        }else if(timeLocal()<timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 3){
+                    document.getElementById(`choosen${point[i]}`).remove();
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox4").style.backgroundColor = "white";
     }
 }
 
 function CheckBox5(){
     var checkbox5 = document.getElementById("checkbox5").checked;
+    var month = document.getElementById("month").innerHTML;
+    var year = document.getElementById("year").innerHTML;
     if(checkbox5){
-        document.getElementById("layout-checkbox5").style.backgroundColor = "rgb(255, 241, 221)";
+        if(month == monthNumber && year == yearlocal){
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 4){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }else if(timeLocal() < timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 4){
+                    var a = document.getElementById(`${point[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${point[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox5").style.backgroundColor = "rgb(255, 241, 221)";
     }else{
-        document.getElementById("layout-checkbox5").style.backgroundColor = "white";
+        if(month == monthNumber && year == yearlocal){
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 4){
+                    var a = document.getElementById(`${data2[i]}`);
+                    document.getElementById(`choosen${data2[i]}`).outerHTML = "";
+                }
+            }
+        }else if(timeLocal() < timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 4){
+                    document.getElementById(`choosen${point[i]}`).remove();
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox5").style.backgroundColor = "white";
     }
 }
 
 function CheckBox6(){
     var checkbox6 = document.getElementById("checkbox6").checked;
+    var month = document.getElementById("month").innerHTML;
+    var year = document.getElementById("year").innerHTML;
     if(checkbox6){
-        document.getElementById("layout-checkbox6").style.backgroundColor = "rgb(255, 241, 221)";
+        if(month == monthNumber && year == yearlocal){
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 5){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }else if(timeLocal() < timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 5){
+                    var a = document.getElementById(`${point[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${point[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox6").style.backgroundColor = "rgb(255, 241, 221)";
     }else{
-        document.getElementById("layout-checkbox6").style.backgroundColor = "white";
+        if(month == monthNumber && yearlocal == year){
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 5){
+                    document.getElementById(`choosen${data2[i]}`).outerHTML = "";
+                }
+            }
+        }else if(timeLocal() < timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 5){
+                    document.getElementById(`choosen${point[i]}`).remove();
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox6").style.backgroundColor = "white";
     }
 }
 
 function CheckBox7(){
     var checkbox7 = document.getElementById("checkbox7").checked;
+    var month = document.getElementById("month").innerHTML;
+    var year = document.getElementById("year").innerHTML;
     if(checkbox7){
-        document.getElementById("layout-checkbox7").style.backgroundColor = "rgb(255, 241, 221)";
+        if(month == monthNumber && year == yearlocal){
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 6){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        else if(timeLocal() < timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 6){
+                    var a = document.getElementById(`${point[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${point[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox7").style.backgroundColor = "rgb(265, 241, 221)";
     }else{
-        document.getElementById("layout-checkbox7").style.backgroundColor = "white";
+        if(month == monthNumber && year == yearlocal){
+            let d = new Date();
+            let month = d.getMonth();
+            let year = d.getFullYear();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            var currentdate = d.getDate();
+            data2 = [];
+            for(var i = point[0]; i<42;i++){
+                var a = document.getElementById(`txt${i}`).innerHTML;
+                if(currentdate <= Number(a)){
+                    data2.push(`${i}`);
+                }
+            }
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                d = new Date(year,month,date)
+                var day = d.getDay();
+                if(day == 6){
+                    document.getElementById(`choosen${data2[i]}`).outerHTML = "";
+                }
+            }
+        }else if(timeLocal() < timeConvert(year,month)){
+            let d = new Date();
+            var point =[];
+            let nowDate = new Date(year,month,0).getDate();
+            for(var i=0;i<7;i++){
+                if(document.getElementById(`txt${i}`).innerHTML < 8){
+                    point.push(i);
+                }
+            }
+            var point2 =(nowDate-point.length)
+            for(var i = 0; i<point2;i++){
+                point.push(point[point.length-1]+1)
+            }
+            for(var i = 0; i<point.length;i++){
+                var date = document.getElementById(`txt${point[i]}`).textContent;
+                d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 6){
+                    document.getElementById(`choosen${point[i]}`).remove();
+                }
+            }
+        }
+        document.getElementById("ele2-container__checkbox7").style.backgroundColor = "white";
     }
 }
 
 function CheckBox8(){
     var checkbox8 = document.getElementById("checkbox8").checked;
     if(checkbox8){
-        document.getElementById("layout-checkbox8").style.backgroundColor = "rgb(255, 241, 221)";
+        document.getElementById("ele2-container__checkbox8").style.backgroundColor = "rgb(255, 241, 221)";
     }else{
-        document.getElementById("layout-checkbox8").style.backgroundColor = "white";
+        document.getElementById("ele2-container__checkbox8").style.backgroundColor = "white";
     }
 }
 
-function ClickAll(){
-    var checkAll = document.getElementById("clickall").checked;
-    if(checkAll){
-        document.getElementById("checkbox2").checked = true;
-        document.getElementById("layout-checkbox2").style.backgroundColor = "rgb(255, 241, 221)";
-        document.getElementById("checkbox3").checked = true;
-        document.getElementById("layout-checkbox3").style.backgroundColor = "rgb(255, 241, 221)";
-        document.getElementById("checkbox4").checked = true;
-        document.getElementById("layout-checkbox4").style.backgroundColor = "rgb(255, 241, 221)";
-        document.getElementById("checkbox5").checked = true;
-        document.getElementById("layout-checkbox5").style.backgroundColor = "rgb(255, 241, 221)";
-        document.getElementById("checkbox6").checked = true;
-        document.getElementById("layout-checkbox6").style.backgroundColor = "rgb(255, 241, 221)";
-        document.getElementById("checkbox7").checked = true;
-        document.getElementById("layout-checkbox7").style.backgroundColor = "rgb(255, 241, 221)";
-        document.getElementById("checkbox8").checked = true;
-        document.getElementById("layout-checkbox8").style.backgroundColor = "rgb(255, 241, 221)";
-        var a = document.getElementById("disable1").disabled;
-        if(!a){
-            document.getElementById("disable1").checked = true;
-            document.getElementById("layout_1").style.backgroundColor = "rgb(255, 241, 221)";
-            document.getElementById("disable2").checked = true;
-            document.getElementById("layout_2").style.backgroundColor = "rgb(255, 241, 221)";
-        }
-        
+function CheckBox9(){
+    var checkbox9 = document.getElementById("checkbox9").checked;
+    if(checkbox9){
+        document.getElementById("ele2-container__checkbox9").style.backgroundColor = "rgb(255, 241, 221)";
     }else{
-        document.getElementById("checkbox2").checked = false;
-        document.getElementById("checkbox3").checked = false;
-        document.getElementById("checkbox4").checked = false;
-        document.getElementById("checkbox5").checked = false;
-        document.getElementById("checkbox6").checked = false;
-        document.getElementById("checkbox7").checked = false;
-        document.getElementById("checkbox8").checked = false;
-        document.getElementById("layout-checkbox2").style.backgroundColor = "white";
-        document.getElementById("layout-checkbox3").style.backgroundColor = "white";
-        document.getElementById("layout-checkbox4").style.backgroundColor = "white";
-        document.getElementById("layout-checkbox5").style.backgroundColor = "white";
-        document.getElementById("layout-checkbox6").style.backgroundColor = "white";
-        document.getElementById("layout-checkbox7").style.backgroundColor = "white";
-        document.getElementById("layout-checkbox8").style.backgroundColor = "white";
-        var b = document.getElementById("radio-7").checked;
-        if(b){
-            document.getElementById("disable1").checked = false;
-            document.getElementById("layout_1").style.backgroundColor = "white";
-            document.getElementById("disable2").checked = false;
-            document.getElementById("layout_2").style.backgroundColor = "white";
-        }
+        document.getElementById("ele2-container__checkbox9").style.backgroundColor = "white";
     }
 }
 
 function Radio6Click(){
     document.getElementById("radio-6-layout").style.backgroundColor = "rgb(255, 241, 221)";
     document.getElementById("radio-7-layout").style.backgroundColor = "white";
-    document.getElementById("layout_1").style.backgroundColor="rgb(212, 212, 212)";
-    document.getElementById("disable1").checked = false;
-    document.getElementById("layout_2").style.backgroundColor="rgb(212, 212, 212)";
-    document.getElementById("disable2").checked = false;
-    document.getElementById("layout_1").classList.add('disable');
-    document.getElementById("layout_2").classList.add('disable');
-    document.getElementById("disable1").disabled = true;
-    document.getElementById("disable2").disabled = true;
+    document.getElementById("ele2-container__checkbox8").style.backgroundColor = "rgb(212, 212, 212)";
+    document.getElementById("checkbox__txt-8").style.color = "white";
+    document.getElementById("ele2-container__checkbox9").style.backgroundColor = "rgb(212, 212, 212)";
+    document.getElementById("checkbox__txt-9").style.color = "white";
+    document.getElementById("checkbox8").disabled = true;
+    document.getElementById("checkbox9").disabled = true;
+    document.getElementById("checkbox8").checked = false;
+    document.getElementById("checkbox9").checked = false;
 }
 
 function Radio7Click(){
     document.getElementById("radio-7-layout").style.backgroundColor = "rgb(255, 241, 221)";
     document.getElementById("radio-6-layout").style.backgroundColor = "white";
-    document.getElementById("layout_1").style.backgroundColor="white";
-    document.getElementById("layout_2").style.backgroundColor="white";
-    document.getElementById("layout_1").classList.remove('disable');
-    document.getElementById("layout_2").classList.remove('disable');
-    document.getElementById("disable1").disabled = false;
-    document.getElementById("disable2").disabled = false;
+    document.getElementById("ele2-container__checkbox8").style.backgroundColor = "white";
+    document.getElementById("checkbox__txt-8").style.color = "orange";
+    document.getElementById("checkbox-disable").style.borderColor = "rgb(212, 212, 212)";
+    document.getElementById("ele2-container__checkbox9").style.backgroundColor = "white";
+    document.getElementById("checkbox__txt-9").style.color = "orange";
+    document.getElementById("checkbox8").disabled = false;
+    document.getElementById("checkbox9").disabled = false;
 }
 
-function CheckBox9(){
-    var checkbox9 = document.getElementById("disable1").checked;
-    if(checkbox9){
-        document.getElementById("layout_1").style.backgroundColor = "rgb(255, 241, 221)";
+function ClickAll(){
+    var checkall = document.getElementById("checkbox-all").checked;
+    var r7 = document.getElementById("radio-7").checked;
+    if(checkall){
+        for(var i =0; i<7;i++){
+            document.getElementById(`ele2-container__checkbox${i+1}`).style.backgroundColor = "rgb(255, 241, 221)";
+            document.getElementById(`checkbox${i+1}`).checked = true;
+        }
+        if(r7){
+            for(var i =0; i<2;i++){
+                document.getElementById(`ele2-container__checkbox${i+8}`).style.backgroundColor = "rgb(255, 241, 221)";
+                document.getElementById(`checkbox${i+8}`).checked = true;
+            }
+        }
     }else{
-        document.getElementById("layout_1").style.backgroundColor = "white";
+        for(var i =0; i<7;i++){
+            document.getElementById(`ele2-container__checkbox${i+1}`).style.backgroundColor = "white";
+            document.getElementById(`checkbox${i+1}`).checked = false;
+        }
+        if(r7){
+            for(var i =0; i<2;i++){
+                document.getElementById(`ele2-container__checkbox${i+8}`).style.backgroundColor = "white";
+                document.getElementById(`checkbox${i+8}`).checked = false;
+            }
+        }
     }
-}
-
-function CheckBox10(){
-    var checkbox10 = document.getElementById("disable2").checked;
-    console.log(checkbox10)
-    if(checkbox10){
-        document.getElementById("layout_2").style.backgroundColor = "rgb(255, 241, 221)";
-    }else{
-        document.getElementById("layout_2").style.backgroundColor = "white";
-    }
+    
 }
 
 function btnMinus(){
@@ -256,279 +1106,771 @@ function timeLocal(){
     return Number(convert);
 }
 
-function timeConvert(yy,mm,dd){
-    var convert = new Date(yy,mm,dd).getTime();
+function timeConvert(yy,mm){
+    var convert = new Date(yy,mm).getTime();
     return Number(convert);
 }
 
+var today = new Date();
+var month = new Array();
+month[0] = 1;
+month[1] = 2;
+month[2] = 3;
+month[3] = 4;
+month[4] = 5;
+month[5] = 6;
+month[6] = 7;
+month[7] = 8;
+month[8] = 9;
+month[9] = 10;
+month[10] = 11;
+month[11] = 12;
+
+var yearlocal = today.getFullYear();
+
+
+var monthNumber = month[today.getMonth()];
+
 function nextMonth(){
-    var month = document.getElementById("month").innerHTML;
     var year = document.getElementById("year").innerHTML;
-
-    month = Number(month)+1;
-    document.getElementById("month").innerHTML = month;
+    var month = document.getElementById("month").innerHTML;
+    var check1 = document.getElementById("checkbox1").checked;
+    var check2 = document.getElementById("checkbox2").checked;
+    var check3 = document.getElementById("checkbox3").checked;
+    var check4 = document.getElementById("checkbox4").checked;
+    var check5 = document.getElementById("checkbox5").checked;
+    var check6 = document.getElementById("checkbox6").checked;
+    var check7 = document.getElementById("checkbox7").checked;
+    month = Number(month) + 1;
     if(month == 13){
-        document.getElementById("month").innerHTML = month-12;
-        year = Number(year) + 1;
+        month = 1;
+        year = Number(year)+1;
         document.getElementById("year").innerHTML = year;
+        document.getElementById("month").innerHTML = month;
+        var data_calendar = dataCalendar(year,month);
+        for(var i=0; i<42;i++){
+            document.getElementById(`txt${i}`).innerHTML = data_calendar[i];
+        }
     }
-    const fist_day_of_month = new Date(year,month-1,1)
-    var day1 = fist_day_of_month.getDay();
-    if(day1 == 0){
-        day1 = 6;
-    }
-    for(var i = 1; i<= 42; i++){
-        var item1 = document.getElementById("item"+i);
-        item1.parentNode.removeChild(item1)
+    document.getElementById("month").innerHTML = month;
+    var data_calendar = dataCalendar(year,month);
+    for(var i=0; i<42;i++){
+        document.getElementById(`txt${i}`).innerHTML = data_calendar[i];
+        document.getElementById(`${i}`).style.backgroundColor = "rgb(250, 250, 250)"
     }
 
-    var totalastmonth = daysInMonth(month-1,year);
-    var total = daysInMonth(month,year);
-
-    var days = 0;
-    for(var i=0;i<=6;i++){
-        var row1 = document.getElementById("row-1");
-        let item = document.createElement("td");
-        item.setAttribute("id",`item${i+1}`);
-        if(i >= day1){
-            if(timeLocal()<timeConvert(year,month,days)){
-                item.classList.add("future");
+    var point =[];
+    let nowDate = new Date(year,month,0).getDate();
+    for(var i=0;i<7;i++){
+        if(document.getElementById(`txt${i}`).innerHTML < 8){
+            point.push(i);
+        }
+    }
+    var point2 =(nowDate-point.length)
+    for(var i = 0; i<point2;i++){
+        point.push(point[point.length-1]+1)
+    }
+    for(var i=0; i<42;i++){
+        var a = document.getElementById(`choosen${i}`);
+        if(a != null){
+            document.getElementById(`choosen${i}`).remove();
+        }
+    }
+    if(check1){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 0){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
             }
-            item.innerHTML = `<div><div>${days+1}</div><div style="visibility: hidden;">0</div></div>`;
-            days += 1;
-            row1.appendChild(item);
-            continue;
         }
-        item.innerHTML = `<div><div>${(totalastmonth-Number(lastDayInMonth(month-1,year)))+i}</div><div style="visibility: hidden;">0</div></div>`;
-        row1.appendChild(item);
-        continue
     }
-
-    var numberRow2 = 7;
-    
-    for(i = 0; i <= 6; i++){
-        var row2 = document.getElementById("row-2");
-        let item = document.createElement("td");
-        item.setAttribute("id",`item${numberRow2+1}`);
-        if(timeLocal()<timeConvert(year,month,days)){
-            item.classList.add("future");
-        }
-        item.innerHTML = `<div><div>${days+1}</div><div style="visibility: hidden;">0</div></div>`;
-        row2.appendChild(item);
-        numberRow2 += 1;
-        days += 1;
-    }
-
-    for(i = 0; i<=6; i++){
-        var row3 = document.getElementById("row-3");
-        let item = document.createElement("td");
-        item.setAttribute("id",`item${numberRow2+1}`);
-        if(timeLocal()<timeConvert(year,month,days)){
-            item.classList.add("future");
-        }
-        item.innerHTML = `<div><div>${days+1}</div><div style="visibility: hidden;">0</div></div>`;
-        row3.appendChild(item);
-        numberRow2 += 1;
-        days += 1;
-    }
-
-    for(i = 0; i<=6; i++){
-        var row4 = document.getElementById("row-4");
-        let item = document.createElement("td");
-        item.setAttribute("id",`item${numberRow2+1}`);
-        if(timeLocal()<timeConvert(year,month,days)){
-            item.classList.add("future");
-        }
-        item.innerHTML = `<div><div>${days+1}</div><div style="visibility: hidden;">0</div></div>`;
-        row4.appendChild(item);
-        numberRow2 += 1;
-        days += 1;
-    }
-
-    var resetdays = 0;
-    for(i = 0; i<=6; i++){
-        var row5 = document.getElementById("row-5");
-        let item = document.createElement("td");
-        if(days >= total){
-            item.setAttribute("id",`item${numberRow2+1}`);
-            item.innerHTML = `<div><div>${resetdays+1}</div><div style="visibility: hidden;">0</div></div>`;
-            row5.appendChild(item);
-            resetdays += 1;
-            numberRow2 += 1;
-            days += 1;
-            if(days == total){
-                days *= 0;
+    if(check2){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 1){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
             }
-            continue;
         }
-        item.setAttribute("id",`item${numberRow2+1}`);
-        if(timeLocal()<timeConvert(year,month,days)){
-            item.classList.add("future");
-        }
-        item.innerHTML = `<div><div>${days+1}</div><div style="visibility: hidden;">0</div></div>`;
-        row5.appendChild(item);
-        numberRow2 += 1;
-        days += 1;
-        continue
     }
-
-    for(i = 0; i<=6; i++){
-        var row6 = document.getElementById("row-6");
-        let item = document.createElement("td");
-        item.setAttribute("id",`item${numberRow2+1}`);
-        console.log(day1,total,days);
-        if(days <= total){
-            if(timeLocal()<timeConvert(year,month,days)){
-                item.classList.add("future");
+    if(check3){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 2){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
             }
-            item.innerHTML = `<div><div>${days}</div><div style="visibility: hidden;">0</div></div>`;
-            days += 1;
-            numberRow2 += 1;
-            row6.appendChild(item);
-            continue
-        }else{
-            item.innerHTML = `<div><div>${resetdays+1}</div><div style="visibility: hidden;">0</div></div>`;
-            resetdays += 1;
-            numberRow2 += 1;
-            row6.appendChild(item);
-            continue
         }
     }
+    if(check4){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 3){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
+            }
+        }
+    }
+    if(check5){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 4){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
+            }
+        }
+    }
+    if(check6){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 5){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
+            }
+        }
+    }
+    if(check7){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 6){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
+            }
+        }
+    }
+    for(var i=0; i < point.length;i++){
+        document.getElementById(point[i]).style.backgroundColor = "white";
+        document.getElementById(point[i]).style.borderRadius = "4px"
+    }
+    if(month == monthNumber && yearlocal == year){
+        const d = new Date();
+        var currentdate = d.getDate();
+        for(var i=0; i < point.length;i++){
+            document.getElementById(point[i]).style.backgroundColor = "rgb(250, 250, 250)";
+            document.getElementById(point[i]).style.borderRadius = "0px"
+        }
+        data2 = []
+        for(var i = point[0]; i<42;i++){
+            var a = document.getElementById(`txt${i}`).innerHTML;
+            if(currentdate <= Number(a)){
+                data2.push(`${i}`);
+            }
+        }
+        console.log(data2)
+        for(var i=0;i<data2.length;i++){
+            document.getElementById(data2[i]).style.backgroundColor = "white";
+            document.getElementById(data2[i]).style.borderRadius = "4px"
+        }
+        for(var i=0; i<42;i++){
+            var a = document.getElementById(`choosen${i}`);
+            if(a != null){
+                document.getElementById(`choosen${i}`).remove();
+            }
+        }
+        if(check1){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 0){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        if(check2){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 1){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        if(check3){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 2){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        if(check4){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 3){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        if(check5){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 4){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        if(check6){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 5){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        if(check7){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 6){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+    }
+    else if(timeLocal() > timeConvert(year,month)){
+        var point =[];
+        let nowDate = new Date(year,month,0).getDate();
+        for(var i=0;i<7;i++){
+            if(document.getElementById(`txt${i}`).innerHTML < 8){
+                point.push(i);
+            }
+        }
+        var point2 =(nowDate-point.length)
+        for(var i = 0; i<point2;i++){
+            point.push(point[point.length-1]+1)
+        }
+        for(var i=0; i < point.length;i++){
+            document.getElementById(point[i]).style.backgroundColor = "rgb(250, 250, 250)";
+            document.getElementById(point[i]).style.borderRadius = "0px"
+        }
+        for(var i=0; i<42;i++){
+            var a = document.getElementById(`choosen${i}`);
+            if(a != null){
+                document.getElementById(`choosen${i}`).remove();
+            }
+        }
+    }
+    return
 }
 
 function priviousMonth(){
-    var month = document.getElementById("month").innerHTML;
     var year = document.getElementById("year").innerHTML;
-    month = Number(month)-1;
-    document.getElementById("month").innerHTML = month;
+    var month = document.getElementById("month").innerHTML;
+    var check1 = document.getElementById("checkbox1").checked;
+    var check2 = document.getElementById("checkbox2").checked;
+    var check3 = document.getElementById("checkbox3").checked;
+    var check4 = document.getElementById("checkbox4").checked;
+    var check5 = document.getElementById("checkbox5").checked;
+    var check6 = document.getElementById("checkbox6").checked;
+    var check7 = document.getElementById("checkbox7").checked;
+    month = Number(month) - 1;
     if(month == 0){
-        document.getElementById("month").innerHTML = month+12;
-        year = Number(year) - 1;
+        month = 12;
+        year = Number(year)-1;
         document.getElementById("year").innerHTML = year;
+        document.getElementById("month").innerHTML = month;
+        var data_calendar = dataCalendar(year,month);
+        for(var i=0; i<42;i++){
+            document.getElementById(`txt${i}`).innerHTML = data_calendar[i];
+        }
     }
-
-    /*Update calendar*/
-    const fist_day_of_month = new Date(year,month-1,1)
-    var day1 = fist_day_of_month.getDay();
-    if(day1 == 0){
-        day1 = 6;
+    document.getElementById("month").innerHTML = month;
+    var data_calendar = dataCalendar(year,month);
+    for(var i=0; i<42;i++){
+        document.getElementById(`txt${i}`).innerHTML = data_calendar[i];
     }
-    for(var i = 1; i<= 42; i++){
-        var item1 = document.getElementById("item"+i);
-        item1.parentNode.removeChild(item1)
+    var point =[];
+    let nowDate = new Date(year,month,0).getDate();
+    for(var i=0;i<7;i++){
+        if(document.getElementById(`txt${i}`).innerHTML < 8){
+            point.push(i);
+        }
     }
-
-    var totalastmonth = daysInMonth(month-1,year);
-    var total = daysInMonth(month,year);
-
-    var days = 0;
-    for(var i=0;i<=6;i++){
-        var row1 = document.getElementById("row-1");
-        let item = document.createElement("td");
-        item.setAttribute("id",`item${i+1}`);
-        if(i >= day1){
-            if(timeLocal()<timeConvert(year,month,days)){
-                item.classList.add("future");
+    var point2 =(nowDate-point.length)
+    for(var i = 0; i<point2;i++){
+        point.push(point[point.length-1]+1)
+    }
+    for(var i=0; i < 42;i++){
+        document.getElementById(`${i}`).style.backgroundColor = "rgb(250, 250, 250)";
+        document.getElementById(`${i}`).style.borderRadius = "0px"
+    }
+    for(var i=0; i<42;i++){
+        var a = document.getElementById(`choosen${i}`);
+        if(a != null){
+            document.getElementById(`choosen${i}`).remove();
+        }
+    }
+    if(check1){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 0){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
             }
-            item.innerHTML = `<div><div>${days+1}</div><div style="visibility: hidden;">0</div></div>`;
-            days += 1;
-            row1.appendChild(item);
-            continue;
         }
-        item.innerHTML = `<div><div>${(totalastmonth-Number(lastDayInMonth(month-1,year)))+i}</div><div style="visibility: hidden;">0</div></div>`;
-        row1.appendChild(item);
-        continue
     }
-
-    var numberRow2 = 7;
-    
-    for(i = 0; i <= 6; i++){
-        var row2 = document.getElementById("row-2");
-        let item = document.createElement("td");
-        item.setAttribute("id",`item${numberRow2+1}`);
-        if(timeLocal()<timeConvert(year,month,days)){
-            item.classList.add("future");
-        }
-        item.innerHTML = `<div><div>${days+1}</div><div style="visibility: hidden;">0</div></div>`;
-        row2.appendChild(item);
-        numberRow2 += 1;
-        days += 1;
-    }
-
-    for(i = 0; i<=6; i++){
-        var row3 = document.getElementById("row-3");
-        let item = document.createElement("td");
-        item.setAttribute("id",`item${numberRow2+1}`);
-        if(timeLocal()<timeConvert(year,month,days)){
-            item.classList.add("future");
-        }
-        item.innerHTML = `<div><div>${days+1}</div><div style="visibility: hidden;">0</div></div>`;
-        row3.appendChild(item);
-        numberRow2 += 1;
-        days += 1;
-    }
-
-    for(i = 0; i<=6; i++){
-        var row4 = document.getElementById("row-4");
-        let item = document.createElement("td");
-        item.setAttribute("id",`item${numberRow2+1}`);
-        if(timeLocal()<timeConvert(year,month,days)){
-            item.classList.add("future");
-        }
-        item.innerHTML = `<div><div>${days+1}</div><div style="visibility: hidden;">0</div></div>`;
-        row4.appendChild(item);
-        numberRow2 += 1;
-        days += 1;
-    }
-
-    var resetdays = 0;
-    for(i = 0; i<=6; i++){
-        var row5 = document.getElementById("row-5");
-        let item = document.createElement("td");
-        if(days >= total){
-            item.setAttribute("id",`item${numberRow2+1}`);
-            item.innerHTML = `<div><div>${resetdays+1}</div><div style="visibility: hidden;">0</div></div>`;
-            row5.appendChild(item);
-            resetdays += 1;
-            numberRow2 += 1;
-            days += 1;
-            if(days == total){
-                days *= 0;
+    if(check2){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 1){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
             }
-            continue;
         }
-        item.setAttribute("id",`item${numberRow2+1}`);
-        if(timeLocal()<timeConvert(year,month,days)){
-            item.classList.add("future");
-        }
-        item.innerHTML = `<div><div>${days+1}</div><div style="visibility: hidden;">0</div></div>`;
-        row5.appendChild(item);
-        numberRow2 += 1;
-        days += 1;
-        continue
     }
-
-    for(i = 0; i<=6; i++){
-        var row6 = document.getElementById("row-6");
-        let item = document.createElement("td");
-        item.setAttribute("id",`item${numberRow2+1}`);
-        console.log(day1,total,days);
-        if(days <= total){
-            if(timeLocal()<timeConvert(year,month,days)){
-                item.classList.add("future");
+    if(check3){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 2){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
             }
-            item.innerHTML = `<div><div>${days}</div><div style="visibility: hidden;">0</div></div>`;
-            days += 1;
-            numberRow2 += 1;
-            row6.appendChild(item);
-            continue
-        }else{
-            item.innerHTML = `<div><div>${resetdays+1}</div><div style="visibility: hidden;">0</div></div>`;
-            resetdays += 1;
-            numberRow2 += 1;
-            row6.appendChild(item);
-            continue
         }
     }
+    if(check4){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 3){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
+            }
+        }
+    }
+    if(check5){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 4){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
+            }
+        }
+    }
+    if(check6){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 5){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
+            }
+        }
+    }
+    if(check7){
+        for(var i = 0; i<point.length;i++){
+            var date = document.getElementById(`txt${point[i]}`).textContent;
+            let d = new Date(year,month-1,date)
+            var day = d.getDay();
+            if(day == 6){
+                var a = document.getElementById(`${point[i]}`);
+                var b = document.createElement('div');
+                b.setAttribute("id",`choosen${point[i]}`)
+                b.classList.add("choosen");
+                b.innerHTML = "曜日を";
+                a.appendChild(b);
+            }
+        }
+    }
+    if(timeLocal() > timeConvert(year,month)){
+        for(var i=0; i<42;i++){
+            var a = document.getElementById(`choosen${i}`);
+            if(a != null){
+                document.getElementById(`choosen${i}`).remove();
+            }
+        }
+    }
+    if(month == monthNumber){
+        const d = new Date();
+        var currentdate = d.getDate();
+        data2 = []
+        for(var i = point[0]; i<42;i++){
+            var a = document.getElementById(`txt${i}`).innerHTML;
+            if(currentdate <= Number(a)){
+                data2.push(`${i}`);
+            }
+        }
+        for(var i=0;i<data2.length;i++){
+            document.getElementById(data2[i]).style.backgroundColor = "white";
+            document.getElementById(data2[i]).style.borderRadius = "4px"
+        }
+        for(var i=0; i<42;i++){
+            var a = document.getElementById(`choosen${i}`);
+            if(a != null){
+                document.getElementById(`choosen${i}`).remove();
+            }
+        }
+        if(check1){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 0){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        if(check2){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 1){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        if(check3){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 2){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        if(check4){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 3){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        if(check5){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 4){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        if(check6){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 5){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+        if(check7){
+            for(var i = 0; i<data2.length;i++){
+                var date = document.getElementById(`txt${data2[i]}`).textContent;
+                let d = new Date(year,month-1,date)
+                var day = d.getDay();
+                if(day == 6){
+                    var a = document.getElementById(`${data2[i]}`);
+                    var b = document.createElement('div');
+                    b.setAttribute("id",`choosen${data2[i]}`)
+                    b.classList.add("choosen");
+                    b.innerHTML = "曜日を";
+                    a.appendChild(b);
+                }
+            }
+        }
+    }else if(timeLocal() < timeConvert(year,month)){
+        var point =[];
+        let nowDate = new Date(year,month,0).getDate();
+        for(var i=0;i<7;i++){
+            if(document.getElementById(`txt${i}`).innerHTML < 8){
+                point.push(i);
+            }
+        }
+        var point2 =(nowDate-point.length)
+        for(var i = 0; i<point2;i++){
+            point.push(point[point.length-1]+1)
+        }
+        for(var i=0; i < point.length;i++){
+            document.getElementById(point[i]).style.backgroundColor = "white";
+            document.getElementById(point[i]).style.borderRadius = "4px"
+        }
+    }
+    return
 }
 
+function dataCalendar(yy,mm){
+    const d = new Date(yy,mm-1,1);
+    let day = d.getDay(); //5
+    let priviousDate = new Date(yy,mm-1,0).getDate();
+    let nowDate = new Date(yy,mm,0).getDate();
+    let point = 0;
+    let data = [];
+    for(var i=0;i<7;i++){
+        if(i >= day){
+            data.reverse()
+            for(var j=0;j<=(6-day);j++){
+                data.push(j+1);
+                point = j+1;
+            }
+            break
+        }
+        data.push(priviousDate-i);
+    }
+    point = point +1;
+    for(point; point<=nowDate;point++){
+        data.push(point);
+    }
+    var len = (42 - data.length);
+    for(var h=0; h < len;h++){
+        data.push(h+1)
+    }
+    return data
+}
+
+document.addEventListener("DOMContentLoaded", function() { 
+    let select1 = document.getElementById("select_1");
+    let select2 = document.getElementById("select_2");
+
+    for(var i=0;i<24;i++){
+        let option = document.createElement('option');
+        option.setAttribute('value',`value_${i}`);
+        option.innerHTML = `- ${i}:00`;
+        select1.appendChild(option);
+    }
+
+    for(var i=0;i<24;i++){
+        let option = document.createElement('option');
+        option.setAttribute('value',`value_${i}`);
+        option.innerHTML = `- ${i}:00`;
+        select2.appendChild(option);
+    }
+
+    var listitems = document.getElementById("content-form-2");
+    var data = ['プレミアムプラン席','プレミアムプラン席','テーブル','1〜7名']
+    for(var i=0;i<4;i++){
+        let div = document.createElement('div');
+        if(i >= 2){
+            div.classList.add('item2',`border${2}`);
+        }else{
+            div.classList.add('item1',`border${i}`);
+        }
+        let span = document.createElement('span');
+        span.classList.add('item1__text--style');
+        span.innerHTML = data[i];
+        div.appendChild(span);
+        listitems.appendChild(div);
+    }
+    /* Custom default checkbox */
+    document.getElementById("ele2-container__checkbox8").style.backgroundColor = "rgb(212, 212, 212)";
+    document.getElementById("ele2-container__checkbox9").style.backgroundColor = "rgb(212, 212, 212)";
+    document.getElementById("checkbox__txt-8").style.color = "white";
+    document.getElementById("checkbox__txt-9").style.color = "white";
+    document.getElementById("checkbox-disable").style.border = "1px solid white";
+    /* End  Custom Default*/
+
+    /*Render dates*/
+    var listDates = document.getElementById('list_dates');
+    var dates = ["日","月","火","水","木","金","土"];
+    for(var i=0;i<7;i++){
+        var item_date = document.createElement("div");
+        item_date.classList.add("date__item");
+        if(i==0){
+            item_date.classList.add("sunday");
+            item_date.innerHTML = dates[i];
+            listDates.appendChild(item_date);
+            continue;
+        }
+        else if(i==6){
+            item_date.classList.add("satday");
+            item_date.innerHTML = dates[i];
+            listDates.appendChild(item_date);
+            continue;
+        }
+        item_date.classList.add("normal-day");
+        item_date.innerHTML = dates[i];
+        listDates.appendChild(item_date);
+    };
+
+    /*Render days*/
+    let d = new Date();
+    let month = d.getMonth();
+    let year = d.getFullYear();
+    month += 1;
+    document.getElementById("year").innerHTML = year;
+    document.getElementById("month").innerHTML = month;
+
+    var data_calendar = dataCalendar(year,month);
+    for(var i=0; i<42;i++){
+        document.getElementById(`txt${i}`).innerHTML = data_calendar[i];
+    }
+    var currentdate = d.getDate();
+    var point =[];
+    for(var i=0;i<7;i++){
+        if(document.getElementById(`txt${i}`).innerHTML < 8){
+            point.push(i)
+        }
+    }
+    data2 = [];
+    for(var i = point[0]; i<42;i++){
+        var a = document.getElementById(`txt${i}`).innerHTML;
+        if(currentdate <= Number(a)){
+            data2.push(`${i}`);
+        }
+    }
+    for(var i=0;i<data2.length;i++){
+        document.getElementById(data2[i]).style.backgroundColor = "white";
+        document.getElementById(data2[i]).style.borderRadius = "4px";
+    }
+
+    var t = MonthHaveChoosen();
+    console.log(t)
+});
